@@ -6,11 +6,11 @@ const Home = () => {
     return (
         <div className="container" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
             {/* Top row: name left, photo right */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '60px', marginBottom: '48px' }}>
+            <div className="home-hero">
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    style={{ fontSize: '4rem', fontWeight: '800', margin: 0, flex: '1 1 0' }}
+                    className="home-h1"
                 >
                     Hi, I'm <span style={{ color: 'var(--color-paint-1)' }}>Darsh</span>.
                 </motion.h1>
@@ -21,14 +21,7 @@ const Home = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.15, duration: 0.5 }}
-                    style={{
-                        width: '360px',
-                        height: '360px',
-                        borderRadius: '50%',
-                        objectFit: 'cover',
-                        flexShrink: 0,
-                        boxShadow: '0 10px 40px rgba(0,0,0,0.12)',
-                    }}
+                    className="home-profile-img"
                 />
             </div>
 

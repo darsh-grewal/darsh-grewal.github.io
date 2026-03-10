@@ -120,8 +120,8 @@ const ProjectCard = ({ project, index }) => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
-            style={{ display: 'flex', gap: '28px', alignItems: 'stretch' }}
         >
+            <div className="project-card-inner">
             {/* Text */}
             <div style={{ flex: '1 1 0', minWidth: 0, display: 'flex', flexDirection: 'column' }}>
                 <h2 style={{ margin: '0 0 4px' }}>{project.title}</h2>
@@ -173,10 +173,11 @@ const ProjectCard = ({ project, index }) => {
 
             {/* Image(s) */}
             {project.images && project.images.length > 0 && (
-                <div style={{ flex: '0 0 340px', height: '240px', borderRadius: '12px', overflow: 'hidden', flexShrink: 0 }}>
+                <div className="project-card-images">
                     <ImageCarousel images={project.images} title={project.title} />
                 </div>
             )}
+            </div>
         </motion.div>
     );
 };

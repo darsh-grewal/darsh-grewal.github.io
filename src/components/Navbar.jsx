@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const HomeIcon = () => (
@@ -8,34 +8,59 @@ const HomeIcon = () => (
     </svg>
 );
 
-const navLink = { textDecoration: 'none', color: 'var(--color-text)', fontWeight: '600' };
+const HamburgerIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+    </svg>
+);
+
+const CloseIcon = () => (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+    </svg>
+);
+
+const navLinks = [
+    { to: '/metallurgy', label: 'Metallurgy' },
+    { to: '/simulation', label: 'Simulation' },
+    { to: '/neurotech', label: 'Neurotech' },
+    { to: '/sustainability', label: 'Sustainability' },
+    { to: '/creative', label: 'Creative' },
+];
 
 const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const closeMenu = () => setMenuOpen(false);
+
     return (
-        <nav style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '20px 40px',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            zIndex: 100,
-            background: 'rgba(255, 255, 255, 0.8)',
-            backdropFilter: 'blur(10px)'
-        }}>
-            <Link to="/" style={{ color: 'var(--color-text)', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <nav className="navbar">
+            <Link to="/" onClick={closeMenu} style={{ color: 'var(--color-text)', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                 <HomeIcon />
             </Link>
 
-            <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-                <Link to="/metallurgy" style={navLink}>Metallurgy</Link>
-                <Link to="/simulation" style={navLink}>Simulation</Link>
-                <Link to="/neurotech" style={navLink}>Neurotech</Link>
-                <Link to="/sustainability" style={navLink}>Sustainability</Link>
-                <Link to="/creative" style={navLink}>Creative</Link>
-                <Link to="/contact" className="btn" style={{ background: 'var(--color-text)', color: 'white', textDecoration: 'none' }}>Contact</Link>
+            {/* Desktop links */}
+            <div className="navbar-links">
+                {navLinks.map(({ to, label }) => (
+                    <Link key={to} to={to} className="navbar-link">{label}</Link>
+                ))}
+                <Link to="/contact" className="btn navbar-link" style={{ background: 'var(--color-text)', color: 'white' }}>Contact</Link>
+            </div>
+
+            {/* Hamburger button (mobile only) */}
+            <button className="navbar-hamburger" onClick={() => setMenuOpen(prev => !prev)} aria-label="Toggle menu">
+                {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
+            </button>
+
+            {/* Mobile dropdown menu */}
+            <div className={`navbar-mobile-menu${menuOpen ? ' open' : ''}`}>
+                {navLinks.map(({ to, label }) => (
+                    <Link key={to} to={to} className="navbar-mobile-link" onClick={closeMenu}>{label}</Link>
+                ))}
+                <Link to="/contact" className="navbar-mobile-link" onClick={closeMenu} style={{ color: 'var(--color-paint-1)', fontWeight: 700 }}>Contact</Link>
             </div>
         </nav>
     );
