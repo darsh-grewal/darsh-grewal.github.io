@@ -25,16 +25,27 @@ const Home = () => {
                 />
             </div>
 
-            {/* Quote at the bottom */}
+            {/* Blurb */}
             <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                style={{ fontSize: '0.95rem', lineHeight: '1.8', fontStyle: 'italic', color: '#666', maxWidth: '780px', margin: 0 }}
+                style={{ fontSize: '1.05rem', lineHeight: '1.8', color: 'var(--color-text)', maxWidth: '680px', margin: '32px 0 0 0' }}
             >
-                "I found that the earliest evidence of knowledge of the nature and behavior of metals was provided by objects in art museums. Slowly I came to see that this was not a coincidence but a consequence of the very nature of discovery, for discovery derives from aesthetically motivated curiosity and is rarely a result of practical purposefulness."
-                <br />
-                <span style={{ fontStyle: 'normal', fontWeight: 600, fontSize: '0.88rem', color: '#888' }}>— Cyril Stanley Smith</span>
+                I'm a materials scientist who got hooked on data — currently looking for roles at the intersection of{' '}
+                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>data science</span> and{' '}
+                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>materials science</span>.
+                Think computational modeling, ML for materials discovery, or anything that bridges atoms and algorithms.
+            </motion.p>
+
+            {/* Nudge to projects */}
+            <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45 }}
+                style={{ fontSize: '0.95rem', color: '#888', marginTop: '20px' }}
+            >
+                👆 Check out my projects in the menu up top!
             </motion.p>
         </div>
     );

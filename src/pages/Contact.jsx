@@ -66,6 +66,17 @@ const Contact = () => {
                     </motion.a>
                 ))}
             </div>
+            {/* Quote */}
+            <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                style={{ fontSize: '0.95rem', lineHeight: '1.8', fontStyle: 'italic', color: '#666', maxWidth: '640px', marginTop: '60px' }}
+            >
+                "I found that the earliest evidence of knowledge of the nature and behavior of metals was provided by objects in art museums. Slowly I came to see that this was not a coincidence but a consequence of the very nature of discovery, for discovery derives from aesthetically motivated curiosity and is rarely a result of practical purposefulness."
+                <br />
+                <span style={{ fontStyle: 'normal', fontWeight: 600, fontSize: '0.88rem', color: '#888' }}>— Cyril Stanley Smith</span>
+            </motion.p>
         </div>
     );
 };
