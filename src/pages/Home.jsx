@@ -32,10 +32,10 @@ const Home = () => {
                 transition={{ delay: 0.3 }}
                 style={{ fontSize: '1.05rem', lineHeight: '1.8', color: 'var(--color-text)', maxWidth: '680px', margin: '32px 0 0 0' }}
             >
-                I'm an MIT trained materials engineer with experience in alloy design, DFT, and MD. Currently looking for roles at the intersection of{' '}
-                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>data science</span> and{' '}
+                I'm an MIT trained materials engineer with experience in alloy design, DFT, and MD. Currently looking for roles in{' '}
+                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>data science</span> and/or{' '}
                 <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>materials science</span>.
-                Think computational modeling, ML for materials discovery, or anything that bridges atoms and bits.
+                I have researched materials for ships, fabrics, and even medical devices.
             </motion.p>
 
             {/* Nudge to projects */}
