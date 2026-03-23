@@ -33,9 +33,9 @@ const Home = () => {
                 style={{ fontSize: '1.05rem', lineHeight: '1.8', color: 'var(--color-text)', maxWidth: '680px', margin: '32px 0 0 0' }}
             >
                 I'm an MIT trained materials engineer with experience in alloy design, DFT, and MD. Currently looking for roles in{' '}
-                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>data science</span> and/or{' '}
-                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>materials science</span>.
-                I have researched materials for ships, fabrics, and even medical devices.
+                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>materials science</span> and/or{' '}
+                <span style={{ color: 'var(--color-paint-1)', fontWeight: 600 }}>data science</span>.
+                I have researched and designed materials for Apple devices, ships, fabrics, and even medical devices.
             </motion.p>
 
             {/* Nudge to projects */}
