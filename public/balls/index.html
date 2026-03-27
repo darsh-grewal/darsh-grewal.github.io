@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elastic Ball Simulation</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        canvas { background: #f0f0f0; display: block; margin: auto; }
+        .controls { margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Elastic Ball Simulation</h1>
+    <canvas id="simulationCanvas"></canvas>
+    <div class="controls">
+        <label>Gravity: <input type="range" id="gravitySlider" min="0" max="1" step="0.01" value="0.2"></label>
+        <label>Elasticity: <input type="range" id="elasticitySlider" min="0" max="1" step="0.01" value="0.8"></label>
+    </div>
+    <script>
+        const canvas = document.getElementById("simulationCanvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 600;
+        canvas.height = 400;
+
+        const gravitySlider = document.getElementById("gravitySlider");
+        const elasticitySlider = document.getElementById("elasticitySlider");
+
+        let balls = [];
+
+        class Ball {
+            constructor(x, y, vx, vy) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+                this.radius = 10;
+                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            }
+
+            update() {
+                this.vy += parseFloat(gravitySlider.value); // Apply gravity
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Collision with walls
+                if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) {
+                    this.vx *= -parseFloat(elasticitySlider.value);
+                    this.x = Math.max(this.radius, Math.min(canvas.width - this.radius, this.x));
+                }
+                if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) {
+                    this.vy *= -parseFloat(elasticitySlider.value);
+                    this.y = Math.max(this.radius, Math.min(canvas.height - this.radius, this.y));
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+
+        canvas.addEventListener("click", (event) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+            const vx = (Math.random() - 0.5) * 5;
+            const vy = (Math.random() - 0.5) * 5;
+            balls.push(new Ball(x, y, vx, vy));
+        });
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            balls.forEach(ball => {
+                ball.update();
+                ball.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>
