@@ -32,7 +32,7 @@ const Home = () => {
                 transition={{ delay: 0.3 }}
                 style={{ fontSize: '1.05rem', lineHeight: '1.8', color: 'var(--color-text)', maxWidth: '680px', margin: '32px 0 0 0' }}
             >
-                Working on materials for BCIs.
+                Currently a Microfabrication Technician at Neuralink. Hopping to apply my materials design and simulation experience towards better BCIs!
             </motion.p>
 
             {/* Nudge to projects */}
